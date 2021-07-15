@@ -2,6 +2,9 @@
 
 #Commands: start|stop|create
 cmd=$1
+#Arguments required only for create commands 
+db_username=$2
+db_password=$3
 
 #Ensures docker daemon is running
 sudo systemctl status docker > /dev/null || systemctl start docker 
@@ -19,14 +22,12 @@ case $cmd in
                 exit 1
         fi
 
-	db_username=$2
-	db_password=$3
 	docker volume create pgdata
 	docker run --name jrvs-psql -e POSTGRES_PASSWORD=${db_password} -e POSTGRES_USER=${db_username} -d -v pgdata:/var/lib/postgresql/data -p 5432:5432 postgres
 	exit $?
 	;;
 
-  start|stop)
+  start|stop) #Starts or stops the PostgreSQL container
 	#Test if jrvs-psql has been created successfuly 
 	docker container inspect jrvs-psql &> /dev/null
         if [ $? -ne 0 ]; then
