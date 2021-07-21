@@ -1,4 +1,9 @@
-CREATE TABLE PUBLIC.host_info 
+--switch to 'host_agent' database
+\c host_agent
+
+--Table of host machine specifications
+--One fixed entry per new machine/node
+CREATE TABLE IF NOT EXISTS PUBLIC.host_info  
   ( 
      id               SERIAL PRIMARY KEY, 
      hostname         VARCHAR NOT NULL, 
@@ -11,7 +16,9 @@ CREATE TABLE PUBLIC.host_info
      timestamp        TIMESTAMP NOT NULL  
   );
 
-CREATE TABLE PUBLIC.host_usage 
+--Table of host machines' resource usage
+--Grouped by host machine id, ordered by collecion time timestamp 
+CREATE TABLE IF NOT EXISTS PUBLIC.host_usage 
   ( 
      timestamp        TIMESTAMP NOT NULL PRIMARY KEY, 
      host_id          SERIAL REFERENCES host_info(id), 
