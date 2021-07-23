@@ -7,7 +7,7 @@ Each server node is instantiated on the Google Cloud Platform, running a Linux k
 
 Bash scripts initiate data collection on each node. Host_info.sh is called only once on setup, whereas resource usage data, host_usage.sh, is called every minute via crontab triggers.  
  
-Three SQL queries are provided to analyze the collected database data. These queries include grouping nodes by hardware info, calculating the average memory usage of each node over 5-minute intervals, and detecting for node failures.  
+Three SQL queries are provided to analyze the collected database data. These queries include grouping nodes by hardware info, calculating the average memory usage of each node over 5-minute intervals, and detecting node failures.  
 
 Finally, this project uses the git version control system and the GitFlow model for managing repository branches and implementing features. 
 
@@ -37,11 +37,11 @@ See resource usage tracker results:
     psql -h localhost -U postgres -d host_agent -f sql/queries.sql
 ```
 
-## Implemenation
+## Implementation
 - PSQL & Docker: `psql_docker.sh` bash script creates a local PostgreSQL container from a Docker Hub image
-- Creating DDL: `ddl.sql` SQL statments create the `host_info` and `host_usage` tables in the `host_agent` database  
+- Creating DDL: `ddl.sql` SQL statements create the `host_info` and `host_usage` tables in the `host_agent` database  
 - Monitoring Agent: `host_info.sh` and `host_usage.sh` bash scripts send node entries into the database tables 
-- SQL Queries: `queries.sql` SQL statments to analyze database data and answer business questions 
+- SQL Queries: `queries.sql` SQL statements to analyze database data and answer business questions 
 
 ### Architecture
 ![Architecture](assets/LinuxSQLArchitecture.png)
@@ -63,7 +63,7 @@ See resource usage tracker results:
 ```
     ./scripts/host_info.sh [psql_host] [psql_port] [db_name] [psql_user] [psql_password]
 ```
-- `host_usage.sh` adds an timestamped entry of the node's current resource usage into the host_usage table
+- `host_usage.sh` adds a timestamped entry of the node's current resource usage into the host_usage table
 ```bash
     ./scripts/host_usage.sh [psql_host] [psql_port] [db_name] [psql_user] [psql_password]
 ```
@@ -113,11 +113,17 @@ Testing was done on the `psql_docker.sh`, `ddl.sql`, `host_info.sh`, and `host_u
 
 Mock data entries were manually inserted into the database for testing the `queries.sql` code to compare the filtered results with the expected results.
 Grouping nodes by hardware info:
+
 ![hardware_info](assets/hardware_info.png)
+
 Calculating the average memory usage of each node over 5-minute intervals:
+
 ![avg_mem](assets/avg_mem.png)
+
 Detecting for node failures was done by stopping the PSQL container to prevent new entries:
+
 ![node_failure](assets/node_failure.png)
+
 All tests passed.
 
 ## Deployment
