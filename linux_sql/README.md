@@ -44,7 +44,7 @@ See resource usage tracker results:
 - SQL Queries: `queries.sql` SQL statements to analyze database data and answer business questions 
 
 ### Architecture
-![Architecture](assets/LinuxSQLArchitecture.png)
+![Architecture](./assets/LinuxSQLArchitecture.png)
 - All Linux nodes are connected internally via a network switch
 - Each node runs copies of the bash script files and sends data to the primary node's database
 
@@ -114,15 +114,15 @@ Testing was done on the `psql_docker.sh`, `ddl.sql`, `host_info.sh`, and `host_u
 Mock data entries were manually inserted into the database for testing the `queries.sql` code to compare the filtered results with the expected results.
 Grouping nodes by hardware info:
 
-![hardware_info](assets/hardware_info.png)
+![hardware_info](./assets/hardware_info.png)
 
 Calculating the average memory usage of each node over 5-minute intervals:
 
-![avg_mem](assets/avg_mem.png)
+![avg_mem](./assets/avg_mem.png)
 
 Detecting for node failures was done by stopping the PSQL container to prevent new entries:
 
-![node_failure](assets/node_failure.png)
+![node_failure](./assets/node_failure.png)
 
 All tests passed.
 
