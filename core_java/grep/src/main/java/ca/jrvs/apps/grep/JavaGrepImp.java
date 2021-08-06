@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Objects;
 import org.apache.log4j.BasicConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -75,7 +76,7 @@ public class JavaGrepImp implements JavaGrep {
       return;
     }
     if (dir.isDirectory()) {
-      for (File file : dir.listFiles()) {
+      for (File file : Objects.requireNonNull(dir.listFiles())) {
         listFilesRecursive(file);
       }
     } else {
@@ -100,7 +101,7 @@ public class JavaGrepImp implements JavaGrep {
       String line;
       BufferedReader reader = new BufferedReader(new FileReader(inputFile));
       while ((line = reader.readLine()) != null) {
-        lines.add(line);
+        lines.add(inputFile + ":" + line);
       }
       reader.close();
     } catch (Exception ex) {
@@ -117,7 +118,8 @@ public class JavaGrepImp implements JavaGrep {
 
   @Override
   public void writeToFile(List<String> lines) throws IOException {
-    BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(this.outFile)));
+    BufferedWriter bufferedWriter = new BufferedWriter(
+        new OutputStreamWriter(new FileOutputStream(this.outFile)));
 
     for (String line : lines) {
       bufferedWriter.write(line);

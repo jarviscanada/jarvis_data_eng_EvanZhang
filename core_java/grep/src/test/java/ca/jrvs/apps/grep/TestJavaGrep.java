@@ -1,40 +1,64 @@
 package ca.jrvs.apps.grep;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.io.File;
 import org.apache.log4j.BasicConfigurator;
 import org.junit.Before;
 import org.junit.Test;
+import org.apache.commons.io.FileUtils;
 
 public class TestJavaGrep {
   JavaGrepImp javaGrepImp;
-  ProcessBuilder processBuilder;
 
   @Before
   public void setUp() {
     javaGrepImp = new JavaGrepImp();
-    processBuilder = new ProcessBuilder();
     BasicConfigurator.configure();
   }
 
   @Test
-  public void testJavaGrep() {
-    String[] args = {".*Romeo.*", "./grep/data", "grep/out/grepOut.txt", "grep/out/egrepOut.txt"};
+  public void testJavaRomeoJuliet() {
+    String[] args = {".*Romeo.*Juliet.*", "./data", "./out/javaGrepRomeoJuliet.txt", "./out/RomeoJuliet.txt"};
 
-    JavaGrepImp javaGrepImp;
-    javaGrepImp = new JavaGrepImp();
     javaGrepImp.setRegex(args[0]);
     javaGrepImp.setRootPath(args[1]);
     javaGrepImp.setOutFile(args[2]);
 
     try {
-//      javaGrepImp.process(); //egrep -r ${regex_pattern} ${src_dir}
-//      processBuilder.command("egrep", "-r", args[0], args[1]);
-//      processBuilder.start();
+      javaGrepImp.process();
+      assert(FileUtils.contentEquals(new File(args[2]), new File(args[3])));
     } catch (Exception ex) {
       javaGrepImp.logger.error(ex.getMessage(), ex);
     }
-    assert(true);
+  }
+
+  @Test
+  public void testJavaRomeo() {
+    String[] args = {".*Romeo.*", "./data", "./out/javaGrepRomeo.txt", "./out/Romeo.txt"};
+    javaGrepImp.setRegex(args[0]);
+    javaGrepImp.setRootPath(args[1]);
+    javaGrepImp.setOutFile(args[2]);
+
+    try {
+      javaGrepImp.process();
+      assert(FileUtils.contentEquals(new File(args[2]), new File(args[3])));
+    } catch (Exception ex) {
+      javaGrepImp.logger.error(ex.getMessage(), ex);
+    }
+  }
+
+  @Test
+  public void testJavaJuliet() {
+    String[] args = {".*Juliet.*", "./data", "./out/javaGrepJuliet.txt", "./out/Juliet.txt"};
+    javaGrepImp.setRegex(args[0]);
+    javaGrepImp.setRootPath(args[1]);
+    javaGrepImp.setOutFile(args[2]);
+
+    try {
+      javaGrepImp.process();
+      assert(FileUtils.contentEquals(new File(args[2]), new File(args[3])));
+    } catch (Exception ex) {
+      javaGrepImp.logger.error(ex.getMessage(), ex);
+    }
   }
 
 }
