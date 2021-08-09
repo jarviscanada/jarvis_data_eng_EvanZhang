@@ -1,5 +1,6 @@
 package ca.jrvs.apps.practice;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
@@ -37,7 +38,7 @@ public class LambdaStreamExcImp implements LambdaStreamExc {
   @Override
   public List<Integer> toList(IntStream intStream) {
 
-    return intStream.mapToObj(i -> i).collect(Collectors.toList());
+    return intStream.boxed().collect(Collectors.toList());
   }
 
   @Override
@@ -47,7 +48,7 @@ public class LambdaStreamExcImp implements LambdaStreamExc {
 
   @Override
   public DoubleStream squareRootIntStream(IntStream intStream) {
-    return intStream.mapToDouble(i -> Math.sqrt(i));
+    return intStream.mapToDouble(Math::sqrt);
   }
 
   @Override
@@ -57,8 +58,7 @@ public class LambdaStreamExcImp implements LambdaStreamExc {
 
   @Override
   public Consumer<String> getLambdaPrinter(String prefix, String suffix) {
-    Consumer<String> lambdaPrinter = message -> System.out.println(prefix + message + suffix);
-    return lambdaPrinter;
+    return message -> System.out.println(prefix + message + suffix);
   }
 
   @Override
@@ -81,8 +81,7 @@ public class LambdaStreamExcImp implements LambdaStreamExc {
 
   @Override
   public Stream<Integer> flatNestedInt(Stream<List<Integer>> ints) {
-    Stream<Integer> nestedInt = ints.flatMap(integers -> integers.stream()).map(i -> i * i);
-    return nestedInt;
+    return ints.flatMap(Collection::stream).map(i -> i * i);
   }
 
 }
