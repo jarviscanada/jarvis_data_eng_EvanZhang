@@ -2,6 +2,7 @@ package ca.jrvs.apps.grep;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.OutputStreamWriter;
@@ -104,7 +105,9 @@ public class JavaGrepImp implements JavaGrep {
         lines.add(inputFile + ":" + line);
       }
       reader.close();
-    } catch (Exception ex) {
+    } catch (FileNotFoundException ex) {
+      this.logger.error(ex.getMessage(), ex);
+    } catch (IOException ex) {
       this.logger.error(ex.getMessage(), ex);
     }
 
@@ -143,7 +146,7 @@ public class JavaGrepImp implements JavaGrep {
 
     try {
       javaGrepImp.process();
-    } catch (Exception ex) {
+    } catch (IOException ex) {
       javaGrepImp.logger.error(ex.getMessage(), ex);
     }
   }
