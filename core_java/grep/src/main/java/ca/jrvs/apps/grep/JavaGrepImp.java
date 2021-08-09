@@ -8,6 +8,8 @@ import java.io.FileReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import org.apache.log4j.BasicConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,7 +63,7 @@ public class JavaGrepImp implements JavaGrep {
     List<File> listFiles = listFiles(this.rootPath);
 
     for (File file : listFiles) {
-      List<String> readLines = readLines(file);
+      List<String> readLines = readLines(file).collect(Collectors.toList());
 
       for (String line : readLines) {
         if (containsPattern(line)) {
@@ -95,7 +97,7 @@ public class JavaGrepImp implements JavaGrep {
   }
 
   @Override
-  public List<String> readLines(File inputFile) {
+  public Stream<String> readLines(File inputFile) {
     List<String> lines = new ArrayList<>();
 
     try {
@@ -111,7 +113,7 @@ public class JavaGrepImp implements JavaGrep {
       this.logger.error(ex.getMessage(), ex);
     }
 
-    return lines;
+    return lines.stream();
   }
 
   @Override

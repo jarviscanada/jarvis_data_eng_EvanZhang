@@ -3,6 +3,7 @@ package ca.jrvs.apps.grep;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Stream;
 
 public interface JavaGrep {
 
@@ -30,7 +31,7 @@ public interface JavaGrep {
    * @return lines
    * @throws IllegalArgumentException if inputFile is not a valid file
    */
-  List<String> readLines(File inputFile);
+  Stream<String> readLines(File inputFile);
 
   /**
    * check if line contains regex pattern

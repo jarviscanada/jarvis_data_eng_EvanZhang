@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Function;
+import java.util.stream.Stream;
 import org.apache.log4j.BasicConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +23,7 @@ public class JavaGrepLambdaImp extends JavaGrepImp {
 
     listFiles.stream()
         .map(this::readLines)
-        .flatMap(Collection::stream)
+        .flatMap(Function.identity())
         .filter(this::containsPattern)
         .forEach(matchedLines::add);
 
@@ -44,19 +46,19 @@ public class JavaGrepLambdaImp extends JavaGrepImp {
   }
 
   @Override
-  public List<String> readLines(File inputFile) {
+  public Stream<String> readLines(File inputFile) {
     List<String> lines = new ArrayList<>();
 
 
     try {
-      Files.lines(inputFile.toPath())
+      return Files.lines(inputFile.toPath())
           .filter(Objects::nonNull)
-          .forEach(line -> lines.add(inputFile + ":" + line));
+          .map(line -> inputFile + ":" + line);
 
     } catch (IOException ex) {
       this.logger.error(ex.getMessage(), ex);
     }
-    return lines;
+    return null;
   }
 
   public static void main(String[] args) {
