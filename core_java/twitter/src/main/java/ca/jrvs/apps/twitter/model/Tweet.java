@@ -89,19 +89,19 @@ public class Tweet {
     this.coordinates = coordinates;
   }
 
-  public int getFavorite_count() {
+  public Integer getFavorite_count() {
     return favorite_count;
   }
 
-  public void setFavorite_count(int favorite_count) {
+  public void setFavorite_count(Integer favorite_count) {
     this.favorite_count = favorite_count;
   }
 
-  public int getRetweet_count() {
+  public Integer getRetweet_count() {
     return retweet_count;
   }
 
-  public void setRetweet_count(int retweet_count) {
+  public void setRetweet_count(Integer retweet_count) {
     this.retweet_count = retweet_count;
   }
 

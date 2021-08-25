@@ -17,7 +17,7 @@ public class TwitterDaoIntTest extends TestCase {
   String tokenSecret = System.getenv("tokenSecret");
 
   //Valid Tweet Id: change when testing testDeleteById()
-  String tweetId = "1430394148125913090";
+  String tweetId = "1430391998880563206";
 
   @Before
   public void setUp() {
