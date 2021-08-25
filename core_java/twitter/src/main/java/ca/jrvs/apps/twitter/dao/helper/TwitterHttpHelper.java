@@ -13,7 +13,6 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.springframework.http.HttpMethod;
 
-
 public class TwitterHttpHelper implements HttpHelper {
 
   private HttpClient httpClient;
