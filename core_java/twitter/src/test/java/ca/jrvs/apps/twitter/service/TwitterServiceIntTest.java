@@ -21,7 +21,7 @@ public class TwitterServiceIntTest extends TestCase {
   String accessToken = System.getenv("accessToken");
   String tokenSecret = System.getenv("tokenSecret");
 
-  //Valid Tweet Id: change when testing testDeleteById()
+  //Valid Tweet Id: change when testing testDelete()
   String tweetId = "1430550035092197377";
   String invalidTweetId = "1430550035092197_bc";
 

@@ -33,6 +33,7 @@ public class TwitterServiceUnitTest extends TestCase {
     Tweet invalidTweetText = TweetUtil.buildTweet(invalidText, (float) 250.0, (float) 50.0);
     Tweet invalidTweetLong = TweetUtil.buildTweet("test", (float) 250.0, (float) 50.0);
     Tweet invalidTweetLat = TweetUtil.buildTweet("test", (float) 50.0, (float) -90.1);
+    Tweet invalidTweetNoCoord = TweetUtil.buildTweet("test", null, (float) 50.0);
 
     //Valid call: should work
     try {
@@ -54,6 +55,11 @@ public class TwitterServiceUnitTest extends TestCase {
     }
     try {
       twitterService.postTweet(invalidTweetLat);
+    } catch (IllegalArgumentException e) {
+      assertTrue(true);
+    }
+    try {
+      twitterService.postTweet(invalidTweetNoCoord);
     } catch (IllegalArgumentException e) {
       assertTrue(true);
     }

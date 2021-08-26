@@ -85,7 +85,6 @@ public class TwitterService implements Service {
   /**
    * Checks if Tweet is valid
    * Text must be within 140 characters
-   * If coordinates are specified:
    * Latitude is valid at {-90, 90} degrees, Longitude: {-180, 180}
    * @param tweet Tweet to be posted
    */
@@ -94,12 +93,14 @@ public class TwitterService implements Service {
       throw new IllegalArgumentException("Text exceeds max number of allowed characters");
     }
 
-    if (tweet.getCoordinates() != null) {
-      Float lon = tweet.getCoordinates().getCoordinates().get(0);
-      Float lat = tweet.getCoordinates().getCoordinates().get(1);
+    Float lon = tweet.getCoordinates().getCoordinates().get(0);
+    Float lat = tweet.getCoordinates().getCoordinates().get(1);
+    try {
       if (lon > 180.0 | lon < -100.0 | lat > 90.0 | lat < -90.0) {
-        throw new IllegalArgumentException("Lat/long out of range");
+        throw new IllegalArgumentException("Lat/long out of range: Latitude [-90, 90], Longitude [-180, 180]");
       }
+    } catch (NullPointerException e) {
+      throw new IllegalArgumentException("Lat/long coordinates required");
     }
   }
 
