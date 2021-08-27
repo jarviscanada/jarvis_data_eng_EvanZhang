@@ -38,13 +38,13 @@ jarvis_projects:
     git_url: "/linux_sql"
     # The project description allows hiring managers to understand your project and technologies you used(e.g. programming languages, libraries, algorithms, hardware, tools, etc.).
     # The project description must start with an action verb (https://bit.ly/3guO98u)
-    description: "Developed a resource monitor application for local Linux clusters via Shell scripts and a Dockerized PostgreSQL database. This minimum viable product (MVP) used Bash Shell scripts to automate the collection of hardware usage data from a CentOS 7 Linux node, run on a Google Cloud virtual machine. Collected data was stored into a containerized PostgreSQL database instance, and filtered for relevant data."
+    description: "Developed a resource monitor application for local Linux clusters via Shell scripts and a Dockerized PostgreSQL database. This minimum viable product (MVP) used Bash Shell scripts to automate the collection of hardware usage data from a CentOS 7 Linux node, run on a Google Cloud virtual machine. Collected data was stored into a containerized PostgreSQL database instance and filtered for relevant data."
   - name: "Core Java Apps"
     git_url: "/core_java"
     description:
-      - "Twitter App: Developed a JDBC app that connects to Twitter API via a MVC architecture and a DAO pattern design that allows for Create, Read, and Delete operations when provided Twitter OAuth keys. Integration and unit testing were done with JUnit and Mockito. Maven was used to automate the build process, and the project was deployed via Docker."
+      - "Twitter App: Developed a JDBC app that connects to Twitter API via an MVC architecture and a DAO pattern design that allows for Create, Read, and Delete operations when provided Twitter OAuth keys. Integration and unit testing were done with JUnit and Mockito. Maven automated the build process, and the project was deployed via Docker."
       - "JDBC App: Developed a Java Database Connectivity DAO for simple CRUD operations. Maven managed the app's build dependencies, Docker containers deployed the PostgreSQL database, and DBeaver tested and verified database results."
-      - "Grep App: Developed a platform-independent implementation of the Linux grep command, which searches through a given directory recursively for text lines that match a specified pattern. Maven was used to automate the build process, and a dockerized image of the project is available publicly on DockerHub."
+      - "Grep App: Developed a platform-independent implementation of the Linux grep command, which searches through a given directory recursively for text lines that match a specified pattern. Maven automated the build process, and a dockerized image of the project is available publicly on DockerHub."
   - name: "Springboot App"
     git_url: "/springboot"
     description: ""
