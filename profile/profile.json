@@ -1,0 +1,117 @@
+{
+  "education": [
+    {
+      "awards_achievements": [
+        "Dean's List (2018)",
+        "GPA: 3.60/4.33"
+      ],
+      "degree": "Bachelor of Applied Sciences",
+      "department": "Computer Engineering",
+      "duration": "2018-2021",
+      "school_name": "University of British Colombia"
+    },
+    {
+      "awards_achievements": [
+        "M.H Morfey Scholarship",
+        "Dean's List (2017)",
+        "GPA: 4.23/4.33"
+      ],
+      "degree": "Engineering Foundations Certificate",
+      "department": "Science \u0026 Technology",
+      "duration": "2017-2018",
+      "school_name": "Douglas College"
+    }
+  ],
+  "github_repo_root_url": "https://github.com/jarviscanada/jarvis_data_eng_EvanZhang",
+  "highlighted_projects": [
+    {
+      "description": "Designed and developed a distributed key-value store in Golang, based on consistent hashing. Designed following references to published frameworks and principles, such as Chord based membership tables and data replication for fault tolerance via chain replication. Instantiated on Dockerized containers and Google Cloud, and tested with up to 40 modes.",
+      "name": "Distributed Hash Table Storage"
+    }
+  ],
+  "jarvis_projects": [
+    {
+      "description": "Developed a resource monitor application for local Linux clusters via Shell scripts and a Dockerized PostgreSQL database. This minimum viable product (MVP) used Bash Shell scripts to automate the collection of hardware usage data from a CentOS 7 Linux node, run on a Google Cloud virtual machine. Collected data was stored into a containerized PostgreSQL database instance, and filtered for relevant data.",
+      "git_url": "/linux_sql",
+      "name": "Cluster Monitor"
+    },
+    {
+      "description": [
+        "Twitter App: Developed a JDBC app that connects to Twitter API via a MVC architecture and a DAO pattern design that allows for Create, Read, and Delete operations when provided Twitter OAuth keys. Integration and unit testing were done with JUnit and Mockito. Maven was used to automate the build process, and the project was deployed via Docker.",
+        "JDBC App: Developed a Java Database Connectivity DAO for simple CRUD operations. Maven managed the app's build dependencies, Docker containers deployed the PostgreSQL database, and DBeaver tested and verified database results.",
+        "Grep App: Developed a platform-independent implementation of the Linux grep command, which searches through a given directory recursively for text lines that match a specified pattern. Maven was used to automate the build process, and a dockerized image of the project is available publicly on DockerHub."
+      ],
+      "git_url": "/core_java",
+      "name": "Core Java Apps"
+    },
+    {
+      "description": "",
+      "git_url": "/springboot",
+      "name": "Springboot App"
+    },
+    {
+      "description": "",
+      "git_url": "/python_data_anlytics",
+      "name": "Python Data Analytics"
+    },
+    {
+      "description": "",
+      "git_url": "/hadoop",
+      "name": "Hadoop"
+    },
+    {
+      "description": "",
+      "git_url": "/spark",
+      "name": "Spark"
+    },
+    {
+      "description": "",
+      "git_url": "/cloud_devops",
+      "name": "Cloud/DevOps"
+    }
+  ],
+  "name": "Evan Zhang",
+  "others": [
+    {
+      "bullets": [
+        "Badminton player",
+        "Kendo enthusiast",
+        "Enjoys making buttery baked goods"
+      ],
+      "title": "Activities/Hobbies"
+    }
+  ],
+  "professional_experience": [
+    {
+      "company": "Jarvis",
+      "description": "Developed various Shell, Java, and Python software applications for data engineering and analysis. Worked on deploying technological solutions via virtual machines, Git, Docker, SQL, and Maven. Worked as a team member and a team lead by following the Scrum and Gitflow frameworks for project planning and team coordination.",
+      "duration": "2021-present",
+      "title": "Software Developer"
+    }
+  ],
+  "skills": {
+    "competent": [
+      "C++",
+      "Matlab",
+      "Python",
+      "Docker",
+      "Maven"
+    ],
+    "familiar": [
+      "Distributed Systems",
+      "Cybersecurity",
+      "Spring",
+      "JavaScript",
+      "Android/React Native"
+    ],
+    "proficient": [
+      "Java",
+      "Linux/Bash",
+      "RDBMS/PostgreSQL",
+      "Agile/Scrum",
+      "Git",
+      "Golang"
+    ]
+  },
+  "summary": "I'm a recent Computer Engineering graduate of UBC in Vancouver, British Colombia. I have a commitment to learning and improving my skills as a Data Engineer, not only in regards to new technologies and analytical problem solving, but in communication, collaboration, and being the best team player that I can be. Being able to tackle big questions makes me excited about software development, and I hope that this drive will allow me to make meaningful contributions to your team."
+}
